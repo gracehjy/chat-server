@@ -15,12 +15,36 @@
          var msg = document.getElementById("message_input").value;
          socketio.emit("message_to_server", {message:msg});
       }
-
       </script>
    </head>
    <body>
-      <input type=text" id="message_input"/>
+      <form>
+         <p>Create A Room</p>
+         <label for="roomName">Room Name</label>
+         <input type="text" name="roomName" id="roomName" required>
+         <br><br>
+         <label for="is_private">Private?</label>
+         <input type="checkbox" id="is_private" name="is_private">
+         <br><br>
+         <input type="text" placeholder="Input Password Here" id="roomPassword" style="display: none;">
+         <br>
+         <input type="submit" value="Create">
+      </form>
+      
+      <input type=text id="message_input"/>
       <button onclick="sendMessage()">send</button>
       <div id="chatlog"></div>
+
+      <script>
+      
+      document.getElementById("is_private").addEventListener("click", function(){
+         if(document.getElementById("is_private").checked){
+         document.getElementById("roomPassword").style.display = "block";
+         }
+         else{
+            document.getElementById("roomPassword").style.display = "none";
+         }
+      })
+      </script>
    </body>
 </html>

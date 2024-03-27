@@ -23,6 +23,9 @@ const socketio = require("socket.io")(http, {
     wsEngine: 'ws'
 });
 
+// let users = [];
+// let rooms = ("lobby",)
+
 // Attach our Socket.IO server to our HTTP server to listen
 const io = socketio.listen(server);
 io.sockets.on("connection", function (socket) {
